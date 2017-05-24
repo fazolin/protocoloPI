@@ -3,9 +3,13 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
+    imgScl = 4;
+    
     ofSetFrameRate(60);
     font.load("monoMMM_5", 64);
     img.load("bikers.jpg");
+    
+
     
     // 2 output channels,
     // 0 input channels
@@ -45,14 +49,18 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    
-    ofSetColor(r,g,b);
-    ofDrawRectangle(0,0,ofGetWidth(),ofGetHeight());
+//    ofTranslate(ofGetWidth(),0);
+//    ofRotate(90);
+    ofBackground(r,g,b);
+    //ofSetColor(r,g,b);
+    //ofDrawRectangle(0,0,ofGetWidth(),ofGetHeight());
     ofSetColor(255);
-    //ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    font.drawString(texto,ofGetWidth()/2,ofGetHeight()/2);
+    
     ofEnableBlendMode(OF_BLENDMODE_MULTIPLY);
-    img.draw(0, 0,ofGetWidth(),ofGetHeight());
+    img.draw(xx-img.getWidth()*(imgScl/2), yy-img.getHeight()*(imgScl/2), img.getWidth()*imgScl,img.getHeight()*imgScl);
+    
+    ofDisableBlendMode();
+    font.drawString(texto,ofGetWidth()/2,ofGetHeight()/2);
 
 
 }
@@ -112,6 +120,8 @@ void ofApp::keyPressed(int key){
             b = 0;
             texto = ofToString(ofRandom(1000));
             bNoise = true;
+            xx = ofRandom(ofGetWidth());
+            yy = ofRandom(ofGetHeight());
             break;
         case '3':
             r = 0;
@@ -120,6 +130,8 @@ void ofApp::keyPressed(int key){
             texto = ofToString(ofRandom(1000));
             bNoise = false;
             freq = ofRandom(.005,.01);
+            xx = ofRandom(ofGetWidth());
+            yy = ofRandom(ofGetHeight());
             break;
         case '4':
             r = 0;
@@ -128,6 +140,8 @@ void ofApp::keyPressed(int key){
             texto = ofToString(ofRandom(1000));
             bNoise = false;
             freq = ofRandom(.04,.06);
+            xx = ofRandom(ofGetWidth());
+            yy = ofRandom(ofGetHeight());
             break;
         case '5':
             r = 255;
@@ -136,6 +150,8 @@ void ofApp::keyPressed(int key){
             texto = ofToString(ofRandom(1000));
             bNoise = false;
             freq = ofRandom(.06,.08);
+            xx = ofRandom(ofGetWidth());
+            yy = ofRandom(ofGetHeight());
             break;
         case '6': // silencio
             r = 255;
@@ -144,6 +160,8 @@ void ofApp::keyPressed(int key){
             texto = ofToString(ofRandom(1000));
             bNoise = false;
             freq = ofRandom(.08,.1);
+            xx = ofRandom(ofGetWidth());
+            yy = ofRandom(ofGetHeight());
             break;
             
         default:
