@@ -45,9 +45,10 @@ class ofApp : public ofBaseApp{
     ofImage img;
     
     
-    
-    
-        int r,g,b;
+    int r,g,b;
     float freq;
-        string texto;
+    string texto;
+    float xx,yy;
+    int imgScl;
+    
 };
